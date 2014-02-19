@@ -34,7 +34,7 @@ server.on('listening', function () {
 });
 
 // 给server绑定'message'事件处理函数
-//请求cookie client数据格式{"from":"192.168.112.11","flag":"reqlogin","url":"http://www.weibo.com"}
+//请求cookie client数据格式{"from":"192.168.112.11:33333","flag":"0","url":"http://www.weibo.com"}
 server.on('message', function (message, remote) {
     console.log(remote.address + ':' + remote.port + ' - ' + message);
     var sendmessage = {};
@@ -48,10 +48,10 @@ server.on('message', function (message, remote) {
     if (isJson(message)) {
         //客户端向服务器请求Cookies
         if ((message.from === (remote.address + ':' + remote.port)) && message.flag === "0" && IsURL(message.url) ) {
-            sendmessage.sourceip = remote.address + ":" + remote.port;
-            sendmessage.url = message.url;
+            sendmessage.sourceip = escape(remote.address + ":" + remote.port);
+            sendmessage.url = escape(message.url);
             sendmessage.flag = "1";
-            sendmessage.from = server.address().address + ":" + server.address().port;
+            sendmessage.from = escape(server.address().address + ":" + server.address().port);
 
         }
 

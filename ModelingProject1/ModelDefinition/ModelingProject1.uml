@@ -33,6 +33,9 @@
             <body>*from:192.168.112.172‎ : 33331 
 *flag:0 
 *url:www.weibo.com
+*code:aSDXQuery1223
+
+(code为随机数，标记唯一性，将在整个流程中传递)
 </body>
           </comment>
           <comment
@@ -41,6 +44,10 @@
 *sourceip:192.168.112.172:33331 
 *flag:1
 *url:www.weibo.com
+*code:aSDXQuery1223
+
+
+
 </body>
           </comment>
           <comment
@@ -58,6 +65,10 @@
 *flag:4
 *cookie:UOR=news.yesky.com,widget.weibo.com,login.sina.com.cn;
 </body>
+          </comment>
+          <comment
+            Id="f43ca33d-0e0a-4eaa-9b48-457fa9bb2db9">
+            <body>1，每个收包方都需要判断消息中的from字段和socket中的实际来源ip是否相同，以防止伪造包)</body>
           </comment>
         </ownedCommentsInternal>
         <fragments>
